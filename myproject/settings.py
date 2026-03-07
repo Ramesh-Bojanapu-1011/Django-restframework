@@ -30,6 +30,7 @@ DEBUG = True
 # be useful during development or testing phases when you want to make your application accessible
 # from any host without specifying individual host names.
 ALLOWED_HOSTS = ["*"]
+import os  # noqa: E402
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -125,3 +126,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
