@@ -25,7 +25,11 @@ SECRET_KEY = "django-insecure-zo@m#=fz+36=w^&$47-wbgkcy!kv88*6e9_hm4qh#+px+#3ibd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# The `ALLOWED_HOSTS = ["*"]` setting in Django allows any host to access your Django application. By
+# setting it to `["*"]`, you are essentially allowing all hosts to access your application. This can
+# be useful during development or testing phases when you want to make your application accessible
+# from any host without specifying individual host names.
+ALLOWED_HOSTS = ["*"]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
