@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 
+
 class SequentialIDModel(models.Model):
     class Meta:
         abstract = True
