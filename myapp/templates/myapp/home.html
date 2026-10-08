@@ -1,0 +1,94 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ItemHub API</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'myapp/styles.css' %}" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <nav class="topbar">
+          <div class="brand">
+            <span class="brand-mark">I</span>
+            <span>ItemHub</span>
+          </div>
+          <a href="/api/itemslist" class="ghost-button">Open API</a>
+        </nav>
+
+        <div class="hero-content">
+          <div class="hero-copy">
+            <p class="eyebrow">REST API Dashboard</p>
+            <h1>Build, browse, and manage your items with ease.</h1>
+            <p class="subtitle">
+              A sleek interface for exploring the item catalog, creating new
+              records, and updating your inventory in a few clicks.
+            </p>
+            <div class="cta-row">
+              <a href="/api/itemslist" class="primary-button">View Items</a>
+              <a href="/admin/" class="secondary-button">Admin Panel</a>
+            </div>
+          </div>
+
+          <div class="status-card">
+            <div class="status-header">
+              <span class="status-dot"></span>
+              <span>API status</span>
+            </div>
+            <div class="status-number">Online</div>
+            <ul>
+              <li>List all items</li>
+              <li>Search by name</li>
+              <li>Order by price or name</li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <main class="content-grid">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Quick actions</h2>
+          </div>
+          <div class="endpoint-list">
+            {% for endpoint in endpoints %}
+            <div class="endpoint-row">
+              <div class="method method-{{ endpoint.method|lower }}">
+                {{ endpoint.method }}
+              </div>
+              <code>{{ endpoint.url }}</code>
+              <span>{{ endpoint.description }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+
+        <aside class="panel info-panel">
+          <div class="panel-header">
+            <h2>Examples</h2>
+          </div>
+          <div class="example-block">
+            <strong>List + search</strong>
+            <code>/api/itemslist?search=laptop</code>
+          </div>
+          <div class="example-block">
+            <strong>Sort by price</strong>
+            <code>/api/itemslist?ordering=price</code>
+          </div>
+          <div class="example-block">
+            <strong>Item details</strong>
+            <code>/api/retrieveitem/1</code>
+          </div>
+        </aside>
+      </main>
+    </div>
+  </body>
+</html>

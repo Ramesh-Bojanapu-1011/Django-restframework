@@ -16,17 +16,35 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.http import HttpResponse
+from django.shortcuts import render
 from django.urls import include, path
 
 
-def home(_request):
-    return HttpResponse(
-        '/api/itemslist - list of all items /api/items/<id> - details of a specific item\n /api/items/create - create a new item /api/items/<id>/update - update an existing item /api/items/<id>/delete - delete an existing item')
+def home(request):
+    endpoints = [
+        {"method": "GET", "url": "/api/itemslist", "description": "List every item"},
+        {
+            "method": "GET",
+            "url": "/api/retrieveitem/<id>",
+            "description": "Fetch one item",
+        },
+        {"method": "POST", "url": "/api/itemcreate", "description": "Create an item"},
+        {
+            "method": "PUT",
+            "url": "/api/updateitem/<id>",
+            "description": "Update an item",
+        },
+        {
+            "method": "DELETE",
+            "url": "/api/deleteitem/<id>",
+            "description": "Delete an item",
+        },
+    ]
+    return render(request, "myapp/home.html", {"endpoints": endpoints})
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", home),
+    path("", home, name="home"),
     path("api/", include("myapp.urls")),
 ]
