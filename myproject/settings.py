@@ -30,7 +30,7 @@ DEBUG = True
 # be useful during development or testing phases when you want to make your application accessible
 # from any host without specifying individual host names.
 ALLOWED_HOSTS = ["*"]
-import os  # noqa: E402
+import os
 
 CORS_ALLOW_ALL_ORIGINS = True
 

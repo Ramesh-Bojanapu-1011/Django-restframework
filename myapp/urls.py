@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import ItemDelete, ItemUpdate, ItemCreate, ItemRetrieve, ItemList
+
+from .views import ItemCreate, ItemDelete, ItemList, ItemRetrieve, ItemUpdate
 
 urlpatterns = [
     path("itemslist", ItemList.as_view(), name="itemslist"),

@@ -1,5 +1,7 @@
-from rest_framework import generics
-from rest_framework import filters
+from typing import ClassVar
+
+from rest_framework import filters, generics
+
 from .models import Item
 from .serializers import ItemSerializer
 
@@ -26,9 +28,9 @@ class ItemRetrieve(generics.RetrieveAPIView):
 
 
 class ItemList(generics.ListAPIView):
-    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-    search_fields = ["name"]
-    filterset_fields = ["name", "description"]
-    ordering_fields = ["name", "description"]
+    filter_backends = (filters.SearchFilter, filters.OrderingFilter)
+    search_fields: ClassVar[list[str]] = ["name"]
+    filterset_fields: ClassVar[list[str]] = ["name", "description"]
+    ordering_fields: ClassVar[list[str]] = ["name", "description"]
     queryset = Item.objects.all()
     serializer_class = ItemSerializer

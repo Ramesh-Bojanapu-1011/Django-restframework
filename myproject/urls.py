@@ -16,12 +16,13 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import include, path
 from django.http import HttpResponse
+from django.urls import include, path
 
 
 def home(_request):
-    return HttpResponse("/api/items/")
+    return HttpResponse(
+        '/api/itemslist - list of all items /api/items/<id> - details of a specific item\n /api/items/create - create a new item /api/items/<id>/update - update an existing item /api/items/<id>/delete - delete an existing item')
 
 
 urlpatterns = [
